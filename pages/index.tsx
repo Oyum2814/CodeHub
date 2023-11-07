@@ -7,7 +7,7 @@ import TutorialList from "@/components/TutorialList";
 import useTutorialList from "@/hooks/useTutorialList";
 import useFavourites from "@/hooks/useFavourites";
 import useLanguage from "@/hooks/useLanguage";
-import {useEffect} from 'react';
+import {useEffect,useState} from 'react';
 export async function getServerSideProps(context: NextPageContext){
   const session = await getSession(context);
 
@@ -30,6 +30,8 @@ export default function Home() {
   const {data:webdev=[]} = useLanguage('Web development')
   const {data:python=[]} = useLanguage('Python')
 
+  const [items, setItems] = useState<any>(tutorials);
+
   const shuffle = (array: Record<string,any>[]) => { 
     for (let i = array.length - 1; i > 0; i--) { 
       const j = Math.floor(Math.random() * (i + 1)); 
@@ -41,19 +43,18 @@ export default function Home() {
     
     return array; 
   }; 
-  let shuffledTutorial:any;
   useEffect(()=>{
-    shuffledTutorial = shuffle(tutorials);
-  },[]);
-  
-
+    const shuffledArray = shuffle(tutorials);
+    setItems(shuffledArray);
+    console.log(shuffledArray);
+  },[tutorials]);
 
   return (
     <>
       <Navbar />
       <Billboard />
       <div className="pb-40">
-        <TutorialList title="Tutorials You May Like" data={shuffledTutorial}/>
+        <TutorialList title="Tutorials You May Like" data={items}/>
         {/* <TutorialList title="Your Learning" data={favourites}/> */}
         <TutorialList title="Web Development Tutorials" data={webdev} />
         <TutorialList title="Python Tutorials" data={python} />
