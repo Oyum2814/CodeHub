@@ -41,13 +41,13 @@ export default function Home() {
     return array; 
   }; 
 
-const shuffledArray = shuffle(tutorials);
+const shuffledTutorial = shuffle(tutorials);
   return (
     <>
       <Navbar />
       <Billboard />
       <div className="pb-40">
-        <TutorialList title="Tutorials You May Like" data={tutorials}/>
+        <TutorialList title="Tutorials You May Like" data={shuffledTutorial}/>
         {/* <TutorialList title="Your Learning" data={favourites}/> */}
         <TutorialList title="Web Development Tutorials" data={webdev} />
         <TutorialList title="Python Tutorials" data={python} />
