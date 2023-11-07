@@ -7,6 +7,7 @@ import TutorialList from "@/components/TutorialList";
 import useTutorialList from "@/hooks/useTutorialList";
 import useFavourites from "@/hooks/useFavourites";
 import useLanguage from "@/hooks/useLanguage";
+import {useEffect} from 'react';
 export async function getServerSideProps(context: NextPageContext){
   const session = await getSession(context);
 
@@ -40,8 +41,13 @@ export default function Home() {
     
     return array; 
   }; 
+  let shuffledTutorial:any;
+  useEffect(()=>{
+    shuffledTutorial = shuffle(tutorials);
+  },[]);
+  
 
-const shuffledTutorial = shuffle(tutorials);
+
   return (
     <>
       <Navbar />
