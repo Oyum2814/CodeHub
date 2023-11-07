@@ -11,19 +11,6 @@ const TutorialList:React.FC<TutorialListProps>= ({data,title})=>{
     if(isEmpty(data)){
         return null;
     }
-    const shuffle = (array: Record<string,any>[]) => { 
-        for (let i = array.length - 1; i > 0; i--) { 
-          const j = Math.floor(Math.random() * (i + 1)); 
-          [array[i], array[j]] = [array[j], array[i]]; 
-        } 
-        while(array.length>3){
-            array.pop();
-        }
-        
-        return array; 
-      }; 
-    
-    const shuffledArray = shuffle(data);
     return (
         <div className="px-4 md:px-12 mt-4 space-y-8">
             <div>

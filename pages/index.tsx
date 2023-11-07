@@ -28,6 +28,20 @@ export default function Home() {
   const {data: favourites=[]} = useFavourites();
   const {data:webdev=[]} = useLanguage('Web development')
   const {data:python=[]} = useLanguage('Python')
+
+  const shuffle = (array: Record<string,any>[]) => { 
+    for (let i = array.length - 1; i > 0; i--) { 
+      const j = Math.floor(Math.random() * (i + 1)); 
+      [array[i], array[j]] = [array[j], array[i]]; 
+    } 
+    while(array.length>3){
+        array.pop();
+    }
+    
+    return array; 
+  }; 
+
+const shuffledArray = shuffle(tutorials);
   return (
     <>
       <Navbar />
