@@ -10,19 +10,13 @@ interface TutorialCardProps{
 const TutorialCard:React.FC<TutorialCardProps> = ({data})=>{
     const router = useRouter();
      return (
-        <div className="bg-white shadow-xl w-[50vw] lg:w-auto">
-             <img className="cursor-pointer object-cover transition duration shadow-xl rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-[12vw] " src={data?.thumbnailUrl} alt="" />
-             <div className="py-2 px-4 flex flex-col align-center">
+        <div className="bg-white shadow-lg w-[40vw]  md:w-[20vw] rounded-lg flex flex-col justify-start items-start">
+             <img onClick={()=>{router.push(`/watch/${data?.id}`)}} className="cursor-pointer object-contain md:object-cover transition duration rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-[14vh] lg:h-[20vh]" src={data?.thumbnailUrl} alt="" />
+             <div className="py-0 md:py-2 px-4 flex flex-col align-center">
                <div className="flex justify-between items-center py-2">
-                  <div className="font-semibold text-xl">{data?.title}</div>
+                  <div className="font-semibold text-md md:text-xl cursor-pointer" onClick={()=>{router.push(`/watch/${data?.id}`)}}>{data?.title}</div>
                   <FavouriteButton tutorialId={data?.id} /> 
-                  <div className="cursor-pointer w-10 h-10 border-black border-2 bg-white rounded-full flex justify-center items-center transition hover:border-[#ffa31a]"
-                        onClick={()=>{router.push(`/watch/${data?.id}`)}}>
-                            <BsPlayFill size={26}/>
-                  </div>
-                
                </div>
-               
                <div>{data?.duration}</div>
              </div>
         </div>

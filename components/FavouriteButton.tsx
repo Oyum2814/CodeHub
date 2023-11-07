@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React,{useCallback, useMemo} from 'react';
-import {AiOutlinePlus,AiOutlineCheck} from 'react-icons/ai'
+import {AiOutlineHeart,AiFillHeart} from 'react-icons/ai'
+
 import useCurrentUser from '@/hooks/useCurrentUser';
 import useFavourites from '@/hooks/useFavourites';
 
@@ -35,11 +36,11 @@ const FavouriteButton:React.FC<FavouriteButtonProps> =({tutorialId})=>{
 
     },[tutorialId, isFavourite, currentUser, mutate, mutateFavourites]);
     
-    const Icon = isFavourite? AiOutlineCheck:AiOutlinePlus
+    const Icon = isFavourite? AiFillHeart:AiOutlineHeart
     return(
         <div
         onClick = {toggleFavourites} 
-        className="cursor-pointer group/item w-6 h-6 lg:w-10 lg:h-10 border-black border-2 rounded-full flex justify-center items-center transition hover:border-[#ffa31a]">
+        className="cursor-pointer group/item w-4 h-4 lg:w-8 lg:h-8  rounded-full flex justify-center items-center transition hover:border-[#ffa31a]">
             <Icon className="text-black" size={25} />
         </div>
     )

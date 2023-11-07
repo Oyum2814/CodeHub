@@ -38,14 +38,14 @@ const Auth = ()=>{
     
 
     return(
-        <div className="relative h-full w-full bg-[url('/images/hero.jpeg')] bg-no-repeat bg-left bg-fixed  bg-contain bg-black">
-            <div className="bg-black w-full h-full lg:bg-opacity-50">
+        <div className="relative h-full w-full bg-white">
+            <div className="w-full h-full ">
                 <nav className="px-8 py-3">
                     {/* <img src="/images/logo.png" alt="Logo" className="h-12"/> */}
                 </nav>
-               <div className="flex justify-end px-4">
-                    <div className="bg-[#252525] bg-opacity-70 px-16 p-16 self-center rounded-[20px] lg:w-2/5 lg:max-w-md w-full md:mr-[80px] mt-[100px] backdrop-blur-[25px]">
-                        <h2 className="text-white text-4xl mb-8 font-semibold">
+               <div className="flex justify-center px-4 text-black">
+                    <div className="px-16 p-16 self-center rounded-[20px] lg:w-2/5 lg:max-w-md w-full md:mr-[80px] mt-[100px] ">
+                        <h2 className=" text-4xl mb-8 font-semibold">
                             {variant==='login'?'Sign In':'Register'}
                         </h2>
                         <div className="flex flex-col gap-4">
@@ -73,24 +73,26 @@ const Auth = ()=>{
                                 value={password}
                             />
                         </div>
-                        <button onClick={variant==='login'?login:register} className="bg-[#FFA31A] py-3 text-black font-semibold rounded-md w-full mt-10
-                        hover:bg-[#99620F] transition-">
+                        <button onClick={variant==='login'?login:register} className="bg-blue-600 py-3 text-white font-medium rounded-md w-full mt-10
+                        hover:bg-blue-800 transition-">
                             {variant==='login'?'Login':'Sign Up'}
                         </button>
-                        <div className="flex flex-row items-center gap-4 mt-8 justify-center">
+                        <div className="flex flex-col items-center gap-4 mt-8 justify-center">
                             <div onClick={(e)=>{
                                 e.preventDefault();
                                 signIn('google',{callbackUrl:'/'});
-                                }} className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
+                                }} className="md:px-12 xs:bg-blue-400 border-2 border-black w-auto h-10 flex items-center px-3 py-6 justify-center cursor-pointer hover:opacity-80 transition">
                                 <FcGoogle size={30}/>
+                                <div className="ml-3 font-bold">Continue with Google</div>
                             </div>
-                            <div onClick={()=>signIn('github',{callbackUrl:'/'})} className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
+                            <div onClick={()=>signIn('github',{callbackUrl:'/'})} className="md:px-12 border-2 border-black w-auto h-10 px-3  py-6 flex items-center justify-center cursor-pointer hover:opacity-80 transition">
                                 <FaGithub size={30}/>
+                                <div className="ml-3 font-bold">Continue with Github</div>
                             </div>
                         </div>
-                        <p className="text-neutral-500 mt-12">
+                        <p className="text-neutral-500 mt-12 text-center">
                             {variant==='login'?'New to TuneHub?':'Already have an account?'}
-                            <span onClick={toggleVariant} className="text-white ml-1 hover:underline cursor-pointer">
+                            <span onClick={toggleVariant} className="text-black ml-1 hover:underline cursor-pointer">
                                 {variant==='login'?'Create Account':'Login'}
                             </span>
                         </p>
