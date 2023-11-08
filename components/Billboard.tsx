@@ -13,7 +13,7 @@ import logoJava from '@/public/images/java-asset.png';
 
 const Billboard = ()=>{
     return(
-        <div className="bg-white relative flex items-center justify-center h-[50vh] px-2 overflow-hidden ">
+        <div className="bg-white w-[100vw] relative flex items-center justify-center h-[50vh] px overflow-hidden ">
              <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

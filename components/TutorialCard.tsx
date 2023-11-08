@@ -10,14 +10,17 @@ interface TutorialCardProps{
 const TutorialCard:React.FC<TutorialCardProps> = ({data})=>{
     const router = useRouter();
      return (
-        <div className="bg-white shadow-lg w-[40vw]  md:w-[20vw] rounded-lg flex flex-col justify-start items-start">
-             <img onClick={()=>{router.push(`/watch/${data?.id}`)}} className="cursor-pointer object-contain md:object-cover transition duration rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-[14vh] lg:h-[20vh]" src={data?.thumbnailUrl} alt="" />
-             <div className="py-0 md:py-2 px-4 flex flex-col align-center">
+        <div className="bg-white shadow-lg w-[40vw]  md:w-[20vw] rounded-lg flex flex-col ">
+             <img onClick={()=>{router.push(`/watch/${data?.id}`)}} className="cursor-pointer object-contain -mt-5 sm:mt-0 sm:object-cover transition duration rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-auto" src={data?.thumbnailUrl} alt="" />
+             <div className="py-0 md:py-2 px-2 flex flex-col align-center">
                <div className="flex justify-between items-center py-2">
-                  <div className="font-semibold text-md md:text-xl cursor-pointer" onClick={()=>{router.push(`/watch/${data?.id}`)}}>{data?.title}</div>
+                  <div className="font-semibold text-md cursor-pointer" onClick={()=>{router.push(`/watch/${data?.id}`)}}>{data?.title}</div>
+               </div>
+               <div className="flex justify-between">
+                  <div>{data?.duration}</div>
                   <FavouriteButton tutorialId={data?.id} /> 
                </div>
-               <div>{data?.duration}</div>
+          
              </div>
         </div>
         // <div className="group bg-zinc-900 col-span relative h-[12vw]">
