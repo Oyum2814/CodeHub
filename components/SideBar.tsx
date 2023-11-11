@@ -1,16 +1,20 @@
 import SideBarItem from './SideBarItem';
-const SideBar = ()=>{
+import React from 'react';
+import { isEmpty } from 'lodash';
+interface SideBarProps{
+    data:Record<string,any>[];
+}
+const SideBar:React.FC<SideBarProps> = ({data})=>{
+    if(isEmpty(data)){
+        return null;
+    }
     return(
         <div className="overflow-y-auto lg:h-[90vh] lg:w-[25%]">
-            <SideBarItem label="Web Development is one of the most famous development" route="/" thumbnail="https://aptechgariahat.com/wp-content/uploads/2021/09/Importance-of-web-development-course-in-2021.jpg" duration="10 minutes"/>
-            <SideBarItem label="Web Development is one of the most famous development" route="/" thumbnail="https://aptechgariahat.com/wp-content/uploads/2021/09/Importance-of-web-development-course-in-2021.jpg" duration="10 minutes"/>
-            <SideBarItem label="Web Development is one of the most famous development" route="/" thumbnail="https://aptechgariahat.com/wp-content/uploads/2021/09/Importance-of-web-development-course-in-2021.jpg" duration="10 minutes"/>
-            <SideBarItem label="Web Development is one of the most famous development" route="/" thumbnail="https://aptechgariahat.com/wp-content/uploads/2021/09/Importance-of-web-development-course-in-2021.jpg" duration="10 minutes"/>
-            <SideBarItem label="Web Development is one of the most famous development" route="/" thumbnail="https://aptechgariahat.com/wp-content/uploads/2021/09/Importance-of-web-development-course-in-2021.jpg" duration="10 minutes"/>
-            <SideBarItem label="Web Development is one of the most famous development" route="/" thumbnail="https://aptechgariahat.com/wp-content/uploads/2021/09/Importance-of-web-development-course-in-2021.jpg" duration="10 minutes"/>
-            <SideBarItem label="Web Development is one of the most famous development" route="/" thumbnail="https://aptechgariahat.com/wp-content/uploads/2021/09/Importance-of-web-development-course-in-2021.jpg" duration="10 minutes"/>
-            <SideBarItem label="Web Development is one of the most famous development" route="/" thumbnail="https://aptechgariahat.com/wp-content/uploads/2021/09/Importance-of-web-development-course-in-2021.jpg" duration="10 minutes"/>
-
+            <h1 className="ml-2 mt-6 text-lg lg:ml-0 lg:mt-0 ">More on <span className="font-bold">{data[0]?.genre}</span></h1>
+            {data.map((Tutorial)=>(
+                <SideBarItem key={Tutorial.id} data={Tutorial}/>
+            ))}
+          
         </div>
     )
 }

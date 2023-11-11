@@ -26,7 +26,6 @@ export async function getServerSideProps(context: NextPageContext){
 }
 export default function Home() {
   const {data:tutorials=[]} = useTutorialList();
-  const {data: favourites=[]} = useFavourites();
   const {data:webdev=[]} = useLanguage('Web development')
   const {data:python=[]} = useLanguage('Python')
 
@@ -46,7 +45,6 @@ export default function Home() {
   useEffect(()=>{
     const shuffledArray = shuffle(tutorials);
     setItems(shuffledArray);
-    console.log(shuffledArray);
   },[tutorials]);
 
   return (

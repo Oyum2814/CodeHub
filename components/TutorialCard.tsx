@@ -14,7 +14,7 @@ const TutorialCard:React.FC<TutorialCardProps> = ({data})=>{
              <img onClick={()=>{router.push(`/watch/${data?.id}`)}} className="cursor-pointer object-contain -mt-5 sm:mt-0 sm:object-cover transition duration rounded-md group-hover:opacity-90 sm:group-hover:opacity-0 delay-300 w-full h-auto" src={data?.thumbnailUrl} alt="" />
              <div className="py-0 md:py-2 px-2 flex flex-col align-center">
                <div className="flex justify-between items-center py-2">
-                  <div className="font-semibold text-md cursor-pointer" onClick={()=>{router.push(`/watch/${data?.id}`)}}>{data?.title}</div>
+                  <div className="font-semibold text-md cursor-pointer line-clamp-1" onClick={()=>{router.push(`/watch/${data?.id}`)}}>{data?.title}</div>
                </div>
                <div className="flex justify-between">
                   <div>{data?.duration}</div>

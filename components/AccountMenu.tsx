@@ -22,7 +22,7 @@ const AccountMenu:React.FC<AccountMenuProps> =({visible})=>{
                     </p>
                 </div>
                 <hr className="bg-gray-600 border-0 h-[0.5px] my-4"/>
-                <div onClick={()=>signOut()} className="text-center text-black text-sm bg-[#FFA31A] hover:bg-[#99620F] w-[90%] px-4 py-2 mx-auto rounded-md font-bold cursor-pointer">
+                <div onClick={()=>signOut()} className="text-center text-white text-sm bg-blue-500 hover:bg-blue-600 w-[90%] px-4 py-2 mx-auto rounded-md font-bold cursor-pointer">
                     Sign Out
                 </div>
             </div>
