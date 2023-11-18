@@ -26,8 +26,12 @@ export async function getServerSideProps(context: NextPageContext){
 }
 export default function Home() {
   const {data:tutorials=[]} = useTutorialList();
-  const {data:webdev=[]} = useLanguage('Web development')
+  const {data:webdev=[]} = useLanguage('Web Development')
   const {data:python=[]} = useLanguage('Python')
+  const {data:java=[]} = useLanguage('Java')
+  const {data:gamedev=[]} = useLanguage('Game Development')
+  const {data:DSA=[]} = useLanguage('DSA')
+  const {data:uiux=[]} = useLanguage('UI/UX')
 
   const [items, setItems] = useState<any>(tutorials);
 
@@ -56,6 +60,10 @@ export default function Home() {
         {/* <TutorialList title="Your Learning" data={favourites}/> */}
         <TutorialList title="Web Development Tutorials" data={webdev} />
         <TutorialList title="Python Tutorials" data={python} />
+        <TutorialList title="Learn About Java" data={java} />
+        <TutorialList title="Game Dev" data={gamedev} />
+        <TutorialList title="Data Structures and Algorithm" data={DSA} />
+        <TutorialList title="UI/UX Skills" data={uiux} />
       </div>
     </>
   )
