@@ -8,32 +8,35 @@ import useFavourites from "@/hooks/useFavourites";
 import useLanguage from '@/hooks/useLanguage';
 import { NextPageContext } from 'next';
 import { getSession } from 'next-auth/react';
+import useCurrentUser from '@/hooks/useCurrentUser';
 
-export async function getServerSideProps(context: NextPageContext){
-    const session = await getSession(context);
+// export async function getServerSideProps(context: NextPageContext){
+//     const session = await getSession(context);
   
-    if(!session){
-      return {
-        redirect:{
-          destination:'/auth',
-          permanent:false,
-        }
-      }
-    }
+//     if(!session){
+//       return {
+//         redirect:{
+//           destination:'/auth',
+//           permanent:false,
+//         }
+//       }
+//     }
   
-    return {
-      props:{}
-    }
-  }
+//     return {
+//       props:{}
+//     }
+//   }
 
 const Watch = ()=>{
     const router = useRouter();
+    const {data:user} = useCurrentUser();
     const {tutorialId} = router.query;
     const { data:curr } = useTutorial(tutorialId as string);
     const {data: lang=[]} = useLanguage(curr?.genre);
     return (
         <div className="h-auto w-screen bg-white ">
-            <Navbar />
+            
+            <Navbar loggedIn={user!==null}/>
             <div className="lg:flex pt-20 lg:items-start">
                 <div className="px-0 lg:px-2 lg:w-[75%]">
                     <video autoPlay controls controlsList="nodownload" src={curr?.videoUrl} className=" h-auto w-full xl:w-[75vw] "></video>

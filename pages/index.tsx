@@ -26,6 +26,7 @@ export async function getServerSideProps(context: NextPageContext){
 }
 export default function Home() {
   const {data:tutorials=[]} = useTutorialList();
+  const {data:oyum=[]} = useLanguage('Oyum');
   const {data:webdev=[]} = useLanguage('Web Development')
   const {data:python=[]} = useLanguage('Python')
   const {data:java=[]} = useLanguage('Java')
@@ -58,6 +59,7 @@ export default function Home() {
       <div className="pb-40">
         <TutorialList title="Tutorials You May Like" data={items}/>
         {/* <TutorialList title="Your Learning" data={favourites}/> */}
+        <TutorialList title="Content by oyum.codes" data={oyum} />
         <TutorialList title="Web Development Tutorials" data={webdev} />
         <TutorialList title="Python Tutorials" data={python} />
         <TutorialList title="Learn About Java" data={java} />

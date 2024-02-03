@@ -18,7 +18,6 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse){
             throw new Error('Invalid Genre');
         }
 
-        const {currentUser} = await serverAuth(req,res);
         const langTutorials = await prismadb.tutorial.findMany({
             where:{
                 genre:genre_,

@@ -10,7 +10,6 @@ export default async function handler(req:NextApiRequest, res:NextApiResponse)
         return res.status(405).end();
     }
     try{
-        await serverAuth(req,res);
         const {tutorialId} = req.query;
         if(typeof tutorialId!='string'){
             throw new Error('Invalid ID');

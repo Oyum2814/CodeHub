@@ -1,16 +1,16 @@
 import Image from 'next/image';
-import logo from '@/public/images/logo.png';
 import {BsChevronDown,BsSearch,BsBell} from 'react-icons/bs';
 import {useState,useCallback,useEffect} from 'react';
-import profileImg from '@/public/images/default-blue.jpeg'
 import AccountMenu from './AccountMenu';
 import NavbarItem from './NavbarItem';
 import MobileMenu from './MobileMenu';
 import useCurrentUser from '@/hooks/useCurrentUser';
 
 const TOP_OFFSET=66;
-
-const Navbar = ()=>{
+interface NavbarProps{
+    loggedIn?:boolean;
+}
+const Navbar:React.FC<NavbarProps> = ({loggedIn})=>{
     const [showMobileMenu,setShowMobileMenu] =useState(false);
     const [showAccountMenu,setShowAccountMenu] =useState(false);
     const {data:user} = useCurrentUser();
@@ -58,23 +58,27 @@ const Navbar = ()=>{
                     <BsChevronDown className={`text-black transition ${showMobileMenu?'rotate-180':'rotate-0'}`}/>
                     <MobileMenu visible={showMobileMenu} />
                 </div>
-                <div className="flex flex-row ml-auto gap-7 items-center">
-                    <div className="text-black hover:scale-125 cursor-pointer transition">
-                        <BsSearch />
-                    </div>
-                    {/* <div className="text-black hover:scale-125 cursor-pointer transition">
-                        <BsBell />
-                    </div> */}
-                    <div onClick={toggleAccountMenu} className="flex flex-row items-center gap-2 cursor-pointer relative">
-                        <div className="w-10 h-10 rounded-full overflow-hidden">
-                        <Image width="80" height="80"
-                    className="h-10 w-10 object-contain rounded-full"
-                    src={user?.image? user.image : 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'} alt="profileImage"/>
+                {!loggedIn &&
+                (
+                    <div className="flex flex-row ml-auto gap-7 items-center">
+                        <div className="text-black hover:scale-125 cursor-pointer transition">
+                            <BsSearch />
                         </div>
-                        <BsChevronDown className={`text-black transition hover:scale-125 ${showAccountMenu?'rotate-180':'rotate-0'}`}/>
+                        {/* <div className="text-black hover:scale-125 cursor-pointer transition">
+                            <BsBell />
+                        </div> */}
+                        <div onClick={toggleAccountMenu} className="flex flex-row items-center gap-2 cursor-pointer relative">
+                            <div className="w-10 h-10 rounded-full overflow-hidden">
+                            <Image width="80" height="80"
+                        className="h-10 w-10 object-contain rounded-full"
+                        src={user?.image? user.image : 'https://www.freeiconspng.com/thumbs/profile-icon-png/profile-icon-9.png'} alt="profileImage"/>
+                            </div>
+                            <BsChevronDown className={`text-black transition hover:scale-125 ${showAccountMenu?'rotate-180':'rotate-0'}`}/>
+                        </div>
+                        <AccountMenu visible={showAccountMenu}/>
                     </div>
-                    <AccountMenu visible={showAccountMenu}/>
-                </div>
+                )}
+                
             </div>
         </nav>
     )
